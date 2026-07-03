@@ -27,12 +27,13 @@ def main() -> int:
     expected = [
         "records: 3",
         "time_grain: all",
-        "bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction",
+        "bucket_by: none",
+        "time_bucket=all size_bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction",
         "token_count_records: 2",
         "reasoning_zero: 1 (50.0%)",
         "exact_516: 1 (50.0%)",
         "exact_516_over_ge_516: 100.0%",
-        "bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=post_compaction",
+        "time_bucket=all size_bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=post_compaction",
         "token_count_records: 1",
         "reasoning_zero: 1 (100.0%)",
     ]

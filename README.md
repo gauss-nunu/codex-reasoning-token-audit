@@ -79,6 +79,31 @@ python codex_reasoning_zero_audit.py --time-grain day
 
 The time-series output includes zero-rate, mean, median, P90, max, and fixed-value counts for `516`, `1034`, and `1552`.
 
+Filter to one surface/model/effort:
+
+```bash
+python codex_reasoning_zero_audit.py --source vscode --model gpt-5.5 --effort xhigh --phase pre_compaction
+```
+
+Group by output-token or input-token bucket:
+
+```bash
+python codex_reasoning_zero_audit.py --source vscode --model gpt-5.5 --effort xhigh --phase pre_compaction --bucket-by output --min-records 100
+python codex_reasoning_zero_audit.py --source vscode --model gpt-5.5 --effort xhigh --phase pre_compaction --bucket-by input --min-records 100
+```
+
+Find high-zero-rate day spikes:
+
+```bash
+python codex_reasoning_zero_audit.py --source vscode --model gpt-5.5 --effort xhigh --phase pre_compaction --time-grain day --min-records 30 --sort-by zero-rate --top 10
+```
+
+Export CSV for plotting:
+
+```bash
+python codex_reasoning_zero_audit.py --source vscode --model gpt-5.5 --effort xhigh --phase pre_compaction --time-grain month --format csv > audit-month.csv
+```
+
 ## Tests
 
 Run the fixture test:
