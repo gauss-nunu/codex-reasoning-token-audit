@@ -4,43 +4,71 @@ Example aggregate output from one local environment. Values can drift as new Cod
 
 ```text
 Codex reasoning_output_tokens audit
-records: 45499
+records: 45586
+time_grain: all
 
-source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=post_compaction
-  token_count_records: 36066
-  reasoning_zero: 7680 (21.29%)
-  reasoning_nonzero: 28386
-  reasoning_median: 43.0
-  reasoning_mean: 184.42
+bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=post_compaction
+  token_count_records: 36153
+  reasoning_zero: 7727 (21.37%)
+  reasoning_nonzero: 28426
+  reasoning_median: 43
+  reasoning_mean: 184.36
+  reasoning_p90: 516.0
   reasoning_max: 10326
-  output_median: 350.0
+  exact_516: 1999 (5.53%)
+  exact_1034: 271 (0.75%)
+  exact_1552: 61 (0.17%)
+  exact_516_over_ge_516: 43.55%
+  output_median: 350
 
-source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction
+bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction
   token_count_records: 6562
   reasoning_zero: 1297 (19.77%)
   reasoning_nonzero: 5265
   reasoning_median: 148.0
   reasoning_mean: 391.82
+  reasoning_p90: 1007.0
   reasoning_max: 11974
+  exact_516: 1128 (17.19%)
+  exact_1034: 98 (1.49%)
+  exact_1552: 44 (0.67%)
+  exact_516_over_ge_516: 53.31%
   output_median: 559.0
 
-source=vscode originator=Codex Desktop model=gpt-5.4 effort=xhigh phase=pre_compaction
+bucket=all source=vscode originator=Codex Desktop model=gpt-5.4 effort=xhigh phase=pre_compaction
   token_count_records: 1762
   reasoning_zero: 120 (6.81%)
   reasoning_nonzero: 1642
   reasoning_median: 122.5
   reasoning_mean: 682.76
+  reasoning_p90: 1664.9
   reasoning_max: 17653
+  exact_516: 76 (4.31%)
+  exact_1034: 8 (0.45%)
+  exact_1552: 8 (0.45%)
+  exact_516_over_ge_516: 16.49%
   output_median: 473.0
 
-source=exec originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction
+bucket=all source=exec originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction
   token_count_records: 46
   reasoning_zero: 0 (0.0%)
   reasoning_nonzero: 46
   reasoning_median: 516.0
   reasoning_mean: 833.04
+  reasoning_p90: 1970.0
   reasoning_max: 2890
+  exact_516: 12 (26.09%)
+  exact_1034: 6 (13.04%)
+  exact_1552: 2 (4.35%)
+  exact_516_over_ge_516: 40.0%
   output_median: 805.0
 ```
 
 This sample omits prompts, assistant messages, session IDs, local paths, and filenames.
+
+Time-series examples:
+
+```bash
+python codex_reasoning_zero_audit.py --time-grain month
+python codex_reasoning_zero_audit.py --time-grain week
+```

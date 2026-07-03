@@ -69,6 +69,16 @@ By default, filenames are not printed. To show scanned files:
 python codex_reasoning_zero_audit.py --show-files
 ```
 
+Group by month, ISO week, or day:
+
+```bash
+python codex_reasoning_zero_audit.py --time-grain month
+python codex_reasoning_zero_audit.py --time-grain week
+python codex_reasoning_zero_audit.py --time-grain day
+```
+
+The time-series output includes zero-rate, mean, median, P90, max, and fixed-value counts for `516`, `1034`, and `1552`.
+
 ## Tests
 
 Run the fixture test:

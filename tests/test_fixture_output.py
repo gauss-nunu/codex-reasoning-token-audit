@@ -26,10 +26,13 @@ def main() -> int:
     output = result.stdout
     expected = [
         "records: 3",
-        "source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction",
+        "time_grain: all",
+        "bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=pre_compaction",
         "token_count_records: 2",
         "reasoning_zero: 1 (50.0%)",
-        "source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=post_compaction",
+        "exact_516: 1 (50.0%)",
+        "exact_516_over_ge_516: 100.0%",
+        "bucket=all source=vscode originator=Codex Desktop model=gpt-5.5 effort=xhigh phase=post_compaction",
         "token_count_records: 1",
         "reasoning_zero: 1 (100.0%)",
     ]
@@ -49,4 +52,3 @@ def main() -> int:
 
 if __name__ == "__main__":
     raise SystemExit(main())
-
