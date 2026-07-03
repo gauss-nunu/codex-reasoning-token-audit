@@ -1,6 +1,6 @@
 # Codex Reasoning Token Audit
 
-![Codex Reasoning Token Audit snapshot](docs/assets/readme-snapshot.png)
+![Reasoning-token telemetry snapshot](docs/assets/readme-snapshot.png)
 
 Local-only audit tooling for Codex session telemetry. It helps spot `reasoning_output_tokens` collapse patterns such as `0`, `516`, `1034`, and `1552` without publishing raw conversations.
 
