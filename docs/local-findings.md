@@ -1,27 +1,8 @@
 # Local Findings Snapshot
 
-Snapshot date: 2026-07-04
+Snapshot date: 2026-07-03
 
 These results come from one local Codex telemetry dataset. Values can drift as new local sessions are added.
-
-## Weekly Zero-Reasoning Signal: `gpt-5.5 / xhigh / vscode / pre_compaction`
-
-This is the simplest first-read signal: completed turns where telemetry reported `reasoning_output_tokens=0`.
-
-| Week | Records | Zero % |
-| --- | ---: | ---: |
-| 2026-W18 | 868 | 22.81 |
-| 2026-W19 | 332 | 25.00 |
-| 2026-W20 | 276 | 22.46 |
-| 2026-W21 | 109 | 57.80 |
-| 2026-W22 | 292 | 17.12 |
-| 2026-W23 | 524 | 22.90 |
-| 2026-W24 | 1,190 | 14.62 |
-| 2026-W25 | 898 | 15.81 |
-| 2026-W26 | 1,090 | 15.69 |
-| 2026-W27 | 1,181 | 23.20 |
-
-Across these weekly buckets, the weighted zero-rate was 19.78% over 6,760 completed-turn records.
 
 ## Monthly Core: `gpt-5.5 / xhigh / vscode / pre_compaction`
 
@@ -30,7 +11,7 @@ Across these weekly buckets, the weighted zero-rate was 19.78% over 6,760 comple
 | 2026-04 | 682 | 18.48 | 90.18 | 74.0 | 255.69 | 516.0 | 7.33 | 42.74 |
 | 2026-05 | 1,195 | 27.62 | 90.96 | 54 | 263.85 | 516.0 | 11.13 | 55.19 |
 | 2026-06 | 4,282 | 16.84 | 82.74 | 213.0 | 440.62 | 1034.0 | 19.57 | 53.14 |
-| 2026-07 | 601 | 26.62 | 81.70 | 331 | 464.11 | 1140.0 | 25.62 | 58.33 |
+| 2026-07 | 403 | 29.78 | 81.64 | 368 | 483.19 | 1279.2 | 26.55 | 59.12 |
 
 The main pattern is a high zero-rate plus a rising exact-516 share. Among turns that reached at least 516 reasoning tokens, around half or more landed exactly on 516.
 
@@ -38,23 +19,23 @@ The main pattern is a high zero-rate plus a rising exact-516 share. Among turns 
 
 | Output tokens | Records | Zero % | `<=516` % | Median reasoning | P90 reasoning | Exact 516 % | Exact 516 / `>=516` |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| 0-250 | 1,533 | 38.29 | 100.00 | 12 | 71.0 | 0.00 | 0.00 |
-| 251-500 | 1,585 | 27.13 | 100.00 | 52 | 232.2 | 0.00 | 0.00 |
-| 501-1000 | 1,896 | 13.66 | 95.20 | 372.0 | 516.0 | 31.59 | 86.81 |
-| 1001-2000 | 1,167 | 3.08 | 59.90 | 516 | 1113.8 | 46.02 | 53.43 |
-| 2001+ | 579 | 4.32 | 19.69 | 1587 | 3716.4 | 6.74 | 7.74 |
+| 0-250 | 1,491 | 38.30 | 100.00 | 12 | 71.0 | 0.00 | 0.00 |
+| 251-500 | 1,543 | 26.90 | 100.00 | 52 | 232.6 | 0.00 | 0.00 |
+| 501-1000 | 1,831 | 13.65 | 95.14 | 366 | 516.0 | 30.91 | 86.41 |
+| 1001-2000 | 1,131 | 3.18 | 60.57 | 516 | 1110.0 | 46.33 | 54.02 |
+| 2001+ | 566 | 4.42 | 19.96 | 1552.0 | 3733.5 | 6.71 | 7.74 |
 
-The `501-1000` output-token band is especially notable: if a turn reached at least 516 reasoning tokens, it landed exactly on 516 in 86.81% of cases.
+The `501-1000` output-token band is especially notable: if a turn reached at least 516 reasoning tokens, it landed exactly on 516 in 86.41% of cases.
 
 ## Input-Context Buckets: `gpt-5.5 / xhigh / vscode / pre_compaction`
 
 | Input tokens | Records | Zero % | `<=516` % | Median reasoning | P90 reasoning | Exact 516 / `>=516` |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| 0-20k | 228 | 8.33 | 93.86 | 372.5 | 516.0 | 84.95 |
-| 20k-50k | 1,306 | 15.01 | 83.69 | 330.0 | 1008.5 | 61.13 |
-| 50k-100k | 1,860 | 15.75 | 80.22 | 165.0 | 1133.4 | 42.41 |
-| 100k-200k | 2,889 | 25.72 | 87.23 | 85 | 880.2 | 54.16 |
-| 200k+ | 477 | 18.03 | 87.42 | 66 | 837.6 | 47.37 |
+| 0-20k | 225 | 8.44 | 93.78 | 370 | 516.0 | 84.44 |
+| 20k-50k | 1,279 | 15.17 | 83.58 | 309 | 1008.2 | 60.15 |
+| 50k-100k | 1,827 | 15.82 | 80.35 | 165 | 1115.6 | 42.74 |
+| 100k-200k | 2,761 | 25.68 | 87.40 | 85 | 846.0 | 54.45 |
+| 200k+ | 470 | 18.30 | 87.87 | 63.0 | 770.7 | 47.22 |
 
 Longer input context does not automatically correspond to higher reasoning-token usage in this local dataset.
 
@@ -68,11 +49,6 @@ Filtered to `gpt-5.5 / xhigh / vscode / pre_compaction` with at least 30 records
 | 2026-05-18 | 31 | 61.29 | 0 | 1006.0 | 50.00 |
 | 2026-07-01 | 80 | 41.25 | 249.5 | 904.1 | 66.67 |
 | 2026-05-03 | 186 | 38.71 | 24.0 | 516.0 | 71.43 |
-| 2026-06-04 | 51 | 37.25 | 167 | 963.0 | 52.94 |
-| 2026-05-07 | 170 | 37.06 | 25.0 | 516.0 | 58.33 |
-| 2026-06-19 | 210 | 30.48 | 273.5 | 1034.0 | 54.12 |
-| 2026-04-30 | 244 | 30.33 | 41.0 | 508.5 | 64.00 |
-| 2026-06-05 | 59 | 28.81 | 68 | 516.0 | 81.82 |
-| 2026-07-03 | 245 | 28.16 | 326 | 1401.2 | 59.09 |
 
 These day-level spikes make the behavior look bursty rather than evenly distributed.
+

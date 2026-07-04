@@ -1,8 +1,8 @@
 # Codex Reasoning Token Audit
 
-![Weekly zero-reasoning rate](docs/assets/weekly-zero-reasoning-rate.png)
+![Reasoning-token telemetry snapshot](docs/assets/telemetry-snapshot.png)
 
-Local-only audit tooling for Codex session telemetry. It helps spot high `reasoning_output_tokens=0` rates and fixed reasoning-token bucket patterns without publishing raw conversations.
+Local-only audit tooling for Codex session telemetry. It helps spot `reasoning_output_tokens` collapse patterns such as `0`, `516`, `1034`, and `1552` without publishing raw conversations.
 
 Use it when you want to answer:
 
@@ -46,14 +46,11 @@ From one sanitized local snapshot:
 
 | Signal | Result |
 | --- | ---: |
-| Total `token_count` records scanned | 46,513 |
-| Desktop GUI `gpt-5.5 / xhigh`, pre-compaction completed-turn records | 6,760 |
-| Desktop GUI `gpt-5.5 / xhigh`, pre-compaction zero-rate | 19.78% |
-| Latest week zero-rate, W27 | 23.20% |
-| Peak week zero-rate, W21 | 57.80% |
-| Desktop GUI `gpt-5.5 / xhigh`, post-compaction zero-rate | 21.51% |
+| Total `token_count` records scanned | 45,499 |
+| Desktop GUI `gpt-5.5 / xhigh`, pre-compaction zero-rate | 19.77% |
+| Desktop GUI `gpt-5.5 / xhigh`, post-compaction zero-rate | 21.29% |
 | CLI `exec` `gpt-5.5 / xhigh`, pre-compaction zero-rate | 0.00% |
-| Output 501-1000 bucket, exact `516 / >=516` | 86.81% |
+| Output 501-1000 bucket, exact `516 / >=516` | 86.41% |
 
 Monthly Desktop GUI `gpt-5.5 / xhigh / pre_compaction`:
 
@@ -62,9 +59,9 @@ Monthly Desktop GUI `gpt-5.5 / xhigh / pre_compaction`:
 | 2026-04 | 682 | 18.48 | 90.18 | 74.0 | 516.0 | 7.33 | 42.74 |
 | 2026-05 | 1,195 | 27.62 | 90.96 | 54 | 516.0 | 11.13 | 55.19 |
 | 2026-06 | 4,282 | 16.84 | 82.74 | 213.0 | 1034.0 | 19.57 | 53.14 |
-| 2026-07 | 601 | 26.62 | 81.70 | 331 | 1140.0 | 25.62 | 58.33 |
+| 2026-07 | 403 | 29.78 | 81.64 | 368 | 1279.2 | 26.55 | 59.12 |
 
-The sharpest local bucket result was the `501-1000` output-token band: among turns that reached at least 516 reasoning tokens, `86.81%` landed exactly on `516`.
+The sharpest local bucket result was the `501-1000` output-token band: among turns that reached at least 516 reasoning tokens, `86.41%` landed exactly on `516`.
 
 Full details:
 
